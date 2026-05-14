@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    ACTIVIDAD 2 – Pantalla de Lista Principal
-    Muestra el registro de vehículos infractores del SMT.
-    Composición: LinearLayout vertical con header + contenedor de tarjetas.
--->
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="16dp">
 
         <!-- HEADER -->
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/layoutHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="#1565C0"
-            android:padding="20dp"
-            android:layout_marginBottom="16dp">
+            android:padding="20dp">
 
             <TextView
+                android:id="@+id/tvTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SMT – Infracciones"
@@ -34,214 +28,219 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvSubtitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitulo"
+                android:layout_marginTop="4dp"
                 android:text="Sistema de Monitoreo de Tráfico"
                 android:textColor="#BBDEFB"
-                android:textSize="13sp"
-                android:layout_marginTop="4dp" />
-        </LinearLayout>
+                android:textSize="13sp" />
 
-        <!-- TARJETA 1 -->
+        </RelativeLayout>
+
+        <!-- CONTENEDOR TARJETAS -->
         <LinearLayout
-            android:id="@+id/cardVehiculo1"
+            android:id="@+id/layoutTarjetas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="10dp"
-            android:elevation="2dp">
+            android:layout_below="@id/layoutHeader"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <!-- TARJETA 1 -->
+            <RelativeLayout
+                android:id="@+id/cardVehiculo1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginBottom="10dp"
+                android:background="#FFFFFF"
+                android:elevation="2dp"
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/tvPlaca1"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="ABC-123"
-                    android:textStyle="bold"
+                    android:textColor="#1565C0"
                     android:textSize="18sp"
-                    android:textColor="#1565C0" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvGravedad1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GRAVE"
-                    android:textColor="#FFFFFF"
+                    android:layout_alignParentEnd="true"
                     android:background="#D32F2F"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
+                    android:text="GRAVE"
+                    android:textColor="#FFFFFF"
                     android:textSize="11sp"
                     android:textStyle="bold" />
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvInfraccion1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exceso de velocidad"
-                android:textColor="#555555"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp" />
+                <TextView
+                    android:id="@+id/tvInfraccion1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPlaca1"
+                    android:layout_marginTop="6dp"
+                    android:text="Exceso de velocidad"
+                    android:textColor="#555555"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tvUbicacion1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📍 Av. Boyacá Km 3"
-                android:textColor="#888888"
-                android:textSize="13sp"
-                android:layout_marginTop="2dp" />
+                <TextView
+                    android:id="@+id/tvUbicacion1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvInfraccion1"
+                    android:layout_marginTop="4dp"
+                    android:text="📍 Av. Boyacá Km 3"
+                    android:textColor="#888888"
+                    android:textSize="13sp" />
 
-            <Button
-                android:id="@+id/btnDetalle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver detalle"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#1565C0"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btnDetalle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvUbicacion1"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#1565C0"
+                    android:text="Ver detalle"
+                    android:textColor="#FFFFFF" />
 
-        <!-- TARJETA 2 -->
-        <LinearLayout
-            android:id="@+id/cardVehiculo2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="10dp"
-            android:elevation="2dp">
+            </RelativeLayout>
 
-            <LinearLayout
+            <!-- TARJETA 2 -->
+            <RelativeLayout
+                android:id="@+id/cardVehiculo2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginBottom="10dp"
+                android:background="#FFFFFF"
+                android:elevation="2dp"
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/tvPlaca2"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="DEF-456"
-                    android:textStyle="bold"
+                    android:textColor="#1565C0"
                     android:textSize="18sp"
-                    android:textColor="#1565C0" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvGravedad2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GRAVE"
-                    android:textColor="#FFFFFF"
+                    android:layout_alignParentEnd="true"
                     android:background="#D32F2F"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
+                    android:text="GRAVE"
+                    android:textColor="#FFFFFF"
                     android:textSize="11sp"
                     android:textStyle="bold" />
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvInfraccion2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exceso de velocidad"
-                android:textColor="#555555"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp" />
+                <TextView
+                    android:id="@+id/tvInfraccion2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPlaca2"
+                    android:layout_marginTop="6dp"
+                    android:text="Exceso de velocidad"
+                    android:textColor="#555555"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tvUbicacion2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📍 Troncal Norte Km 7"
-                android:textColor="#888888"
-                android:textSize="13sp"
-                android:layout_marginTop="2dp" />
+                <TextView
+                    android:id="@+id/tvUbicacion2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvInfraccion2"
+                    android:layout_marginTop="4dp"
+                    android:text="📍 Troncal Norte Km 7"
+                    android:textColor="#888888"
+                    android:textSize="13sp" />
 
-            <Button
-                android:id="@+id/btnDetalle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver detalle"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#1565C0"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btnDetalle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvUbicacion2"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#1565C0"
+                    android:text="Ver detalle"
+                    android:textColor="#FFFFFF" />
 
-        <!-- TARJETA 3 -->
-        <LinearLayout
-            android:id="@+id/cardVehiculo3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="10dp"
-            android:elevation="2dp">
+            </RelativeLayout>
 
-            <LinearLayout
+            <!-- TARJETA 3 -->
+            <RelativeLayout
+                android:id="@+id/cardVehiculo3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:background="#FFFFFF"
+                android:elevation="2dp"
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/tvPlaca3"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="XYZ-789"
-                    android:textStyle="bold"
+                    android:textColor="#1565C0"
                     android:textSize="18sp"
-                    android:textColor="#1565C0" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvGravedad3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LEVE"
-                    android:textColor="#FFFFFF"
+                    android:layout_alignParentEnd="true"
                     android:background="#F57C00"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
+                    android:text="LEVE"
+                    android:textColor="#FFFFFF"
                     android:textSize="11sp"
                     android:textStyle="bold" />
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvInfraccion3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Semáforo en rojo"
-                android:textColor="#555555"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp" />
+                <TextView
+                    android:id="@+id/tvInfraccion3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPlaca3"
+                    android:layout_marginTop="6dp"
+                    android:text="Semáforo en rojo"
+                    android:textColor="#555555"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tvUbicacion3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📍 Cra. 30 con Cll 72"
-                android:textColor="#888888"
-                android:textSize="13sp"
-                android:layout_marginTop="2dp" />
+                <TextView
+                    android:id="@+id/tvUbicacion3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvInfraccion3"
+                    android:layout_marginTop="4dp"
+                    android:text="📍 Cra. 30 con Cll 72"
+                    android:textColor="#888888"
+                    android:textSize="13sp" />
 
-            <Button
-                android:id="@+id/btnDetalle3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver detalle"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#1565C0"
-                android:textColor="#FFFFFF" />
+                <Button
+                    android:id="@+id/btnDetalle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvUbicacion3"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#1565C0"
+                    android:text="Ver detalle"
+                    android:textColor="#FFFFFF" />
+
+            </RelativeLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
+
 </ScrollView>

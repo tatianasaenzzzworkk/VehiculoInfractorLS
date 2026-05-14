@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- ACTIVIDAD 2 – Pantalla de Detalle
-    Muestra la información completa del vehículo infractor seleccionado -->
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="16dp">
 
         <!-- HEADER -->
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/layoutHeaderDetalle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="#1565C0"
-            android:padding="20dp"
-            android:layout_marginBottom="16dp">
+            android:padding="20dp">
 
             <TextView
+                android:id="@+id/tvTituloDetalle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Detalle de Infracción"
@@ -34,27 +31,30 @@
                 android:id="@+id/tvDetallePlacaHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tvTituloDetalle"
+                android:layout_marginTop="4dp"
                 android:text="Placa: —"
                 android:textColor="#BBDEFB"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp" />
-        </LinearLayout>
+                android:textSize="14sp" />
 
-        <!-- BLOQUE: GRAVEDAD -->
-        <LinearLayout
+        </RelativeLayout>
+
+        <!-- GRAVEDAD -->
+        <RelativeLayout
+            android:id="@+id/layoutGravedad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_below="@id/layoutHeaderDetalle"
+            android:layout_marginTop="16dp"
             android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="10dp"
             android:elevation="2dp"
-            android:gravity="center_vertical">
+            android:padding="16dp">
 
             <TextView
-                android:layout_width="0dp"
+                android:id="@+id/tvLabelGravedad"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_centerVertical="true"
                 android:text="Nivel de gravedad"
                 android:textColor="#555555"
                 android:textSize="14sp" />
@@ -63,209 +63,219 @@
                 android:id="@+id/tvDetalleGravedad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="—"
-                android:textColor="#FFFFFF"
+                android:layout_alignParentEnd="true"
                 android:background="#D32F2F"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="6dp"
+                android:text="GRAVE"
+                android:textColor="#FFFFFF"
                 android:textSize="13sp"
                 android:textStyle="bold" />
-        </LinearLayout>
 
-        <!-- BLOQUE: DATOS PRINCIPALES -->
+        </RelativeLayout>
+
+        <!-- DATOS VEHÍCULO -->
         <LinearLayout
+            android:id="@+id/layoutDatosVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_below="@id/layoutGravedad"
+            android:layout_marginTop="10dp"
             android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="10dp"
-            android:elevation="2dp">
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
                 android:text="DATOS DEL VEHÍCULO"
                 android:textColor="#1565C0"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="12dp" />
+                android:textStyle="bold" />
 
-            <!-- Fila: Placa -->
-            <LinearLayout
+            <!-- PLACA -->
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="10dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/labelPlaca"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Placa"
                     android:textColor="#888888"
                     android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tvDetallePlaca"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="—"
+                    android:layout_alignParentEnd="true"
+                    android:text="ABC-123"
                     android:textColor="#212121"
                     android:textSize="13sp"
                     android:textStyle="bold" />
-            </LinearLayout>
 
-            <!-- Fila: Tipo de infracción -->
-            <LinearLayout
+            </RelativeLayout>
+
+            <!-- INFRACCIÓN -->
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="10dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/labelInfraccion"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Tipo de infracción"
                     android:textColor="#888888"
                     android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tvDetalleTipoInfraccion"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="—"
+                    android:layout_alignParentEnd="true"
+                    android:text="Exceso de velocidad"
                     android:textColor="#212121"
                     android:textSize="13sp" />
-            </LinearLayout>
 
-            <!-- Fila: Velocidad registrada -->
-            <LinearLayout
+            </RelativeLayout>
+
+            <!-- VELOCIDAD REGISTRADA -->
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="10dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/labelVelReg"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Vel. registrada"
                     android:textColor="#888888"
                     android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tvDetalleVelocidadReg"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="— km/h"
+                    android:layout_alignParentEnd="true"
+                    android:text="95 km/h"
                     android:textColor="#D32F2F"
                     android:textSize="13sp"
                     android:textStyle="bold" />
-            </LinearLayout>
 
-            <!-- Fila: Velocidad permitida -->
-            <LinearLayout
+            </RelativeLayout>
+
+            <!-- VELOCIDAD PERMITIDA -->
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="10dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/labelVelPerm"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Vel. permitida"
                     android:textColor="#888888"
                     android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tvDetalleVelocidadPerm"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="— km/h"
+                    android:layout_alignParentEnd="true"
+                    android:text="60 km/h"
                     android:textColor="#2E7D32"
                     android:textSize="13sp"
                     android:textStyle="bold" />
-            </LinearLayout>
 
-            <!-- Fila: Exceso -->
-            <LinearLayout
+            </RelativeLayout>
+
+            <!-- EXCESO -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/labelExceso"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Exceso"
                     android:textColor="#888888"
                     android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tvDetalleExceso"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="— km/h"
+                    android:layout_alignParentEnd="true"
+                    android:text="35 km/h"
                     android:textColor="#212121"
                     android:textSize="13sp" />
-            </LinearLayout>
+
+            </RelativeLayout>
+
         </LinearLayout>
 
-        <!-- BLOQUE: UBICACIÓN Y FECHA -->
+        <!-- UBICACIÓN -->
         <LinearLayout
+            android:id="@+id/layoutUbicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_below="@id/layoutDatosVehiculo"
+            android:layout_marginTop="10dp"
             android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp"
-            android:elevation="2dp">
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
                 android:text="LOCALIZACIÓN"
                 android:textColor="#1565C0"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="12dp" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvDetalleUbicacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📍 —"
+                android:layout_marginBottom="8dp"
+                android:text="📍 Av. Boyacá Km 3"
                 android:textColor="#212121"
-                android:textSize="14sp"
-                android:layout_marginBottom="8dp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvDetalleFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📅 —"
+                android:text="📅 2025-05-01"
                 android:textColor="#555555"
                 android:textSize="13sp" />
+
         </LinearLayout>
 
-        <!-- BOTÓN VOLVER -->
+        <!-- BOTÓN -->
         <Button
             android:id="@+id/btnVolver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" Volver"
+            android:layout_below="@id/layoutUbicacion"
+            android:layout_marginTop="16dp"
             android:backgroundTint="#1565C0"
-            android:textColor="#FFFFFF"
-            android:padding="14dp" />
+            android:padding="14dp"
+            android:text="Volver"
+            android:textColor="#FFFFFF" />
 
-    </LinearLayout>
+    </RelativeLayout>
+
 </ScrollView>
