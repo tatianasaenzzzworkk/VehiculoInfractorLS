@@ -3,90 +3,167 @@ package com.example.vehiculoinfractorls.data
 import android.util.Log
 import com.example.vehiculoinfractorls.model.VehiculoInfractor
 
-/**
- * ACTIVIDAD 1 – Demostración de colecciones de Kotlin
- * Cubre: List, MutableList y Map con operaciones básicas.
- */
 object ColeccionesDemo {
 
     private const val TAG = "SMT_Colecciones"
 
-    // 1. LIST (inmutable) — snapshot histórico
-    val historialInfracciones: List<VehiculoInfractor> = listOf(
-        VehiculoInfractor(1, "ABC-123", "Exceso de velocidad", 95,  60, "Av. Boyacá Km 3",   "2025-05-01"),
-        VehiculoInfractor(2, "XYZ-789", "Semáforo en rojo",    0,   0,  "Cra. 30 con Cll 72","2025-05-02"),
-        VehiculoInfractor(3, "DEF-456", "Exceso de velocidad", 130, 80, "Troncal Norte Km 7","2025-05-03"),
-        VehiculoInfractor(4, "GHI-321", "Invasión de carril",  0,   0,  "Cll 100 con Cra 15","2025-05-04"),
-        VehiculoInfractor(5, "JKL-654", "Exceso de velocidad", 110, 60, "Autopista Sur Km 2","2025-05-05")
-    )
+    // Historial mock de infracciones
 
-    // 2. MUTABLELIST — cola de infracciones activas
-    val infraccionesActivas: MutableList<VehiculoInfractor> = mutableListOf(
-        VehiculoInfractor(6, "MNO-987", "Exceso de velocidad", 75, 50, "Cll 26 con Cra 68", "2025-05-06"),
-        VehiculoInfractor(7, "PQR-147", "Semáforo en rojo",    0,  0,  "Av. El Dorado",     "2025-05-07")
-    )
+    private val historialInfracciones =
+        listOf(
 
-    // 3. MAP — índice placa → infracción más reciente
-    val indicePorPlaca: Map<String, VehiculoInfractor> = mapOf(
-        "ABC-123" to historialInfracciones[0],
-        "XYZ-789" to historialInfracciones[1],
-        "DEF-456" to historialInfracciones[2],
-        "GHI-321" to historialInfracciones[3],
-        "JKL-654" to historialInfracciones[4]
-    )
+            VehiculoInfractor(
+                id = 1,
+                placa = "ABC-123",
+                tipoInfraccion = "Exceso de velocidad",
+                velocidadRegistrada = 95,
+                velocidadPermitida = 60,
+                ubicacion = "Av. Boyacá Km 3",
+                fecha = "2025-05-01"
+            ),
 
-    /**
-     * Ejecuta y registra todas las demostraciones de operaciones.
-     */
+            VehiculoInfractor(
+                id = 2,
+                placa = "XYZ-789",
+                tipoInfraccion = "Semáforo en rojo",
+                velocidadRegistrada = 0,
+                velocidadPermitida = 0,
+                ubicacion = "Cra. 30 con Cll 72",
+                fecha = "2025-05-02"
+            ),
+
+            VehiculoInfractor(
+                id = 3,
+                placa = "DEF-456",
+                tipoInfraccion = "Exceso de velocidad",
+                velocidadRegistrada = 130,
+                velocidadPermitida = 80,
+                ubicacion = "Troncal Norte Km 7",
+                fecha = "2025-05-03"
+            ),
+
+            VehiculoInfractor(
+                id = 4,
+                placa = "GHI-321",
+                tipoInfraccion = "Invasión de carril",
+                velocidadRegistrada = 0,
+                velocidadPermitida = 0,
+                ubicacion = "Cll 100 con Cra 15",
+                fecha = "2025-05-04"
+            ),
+
+            VehiculoInfractor(
+                id = 5,
+                placa = "JKL-654",
+                tipoInfraccion = "Exceso de velocidad",
+                velocidadRegistrada = 110,
+                velocidadPermitida = 60,
+                ubicacion = "Autopista Sur Km 2",
+                fecha = "2025-05-05"
+            ),
+
+            VehiculoInfractor(
+                id = 6,
+                placa = "MNO-987",
+                tipoInfraccion = "Uso indebido del carril exclusivo",
+                velocidadRegistrada = 0,
+                velocidadPermitida = 0,
+                ubicacion = "Av. Caracas",
+                fecha = "2025-05-06"
+            ),
+
+            VehiculoInfractor(
+                id = 7,
+                placa = "PQR-147",
+                tipoInfraccion = "Exceso de velocidad",
+                velocidadRegistrada = 150,
+                velocidadPermitida = 80,
+                ubicacion = "Ruta Nacional 55",
+                fecha = "2025-05-07"
+            ),
+
+            VehiculoInfractor(
+                id = 8,
+                placa = "STU-258",
+                tipoInfraccion = "Semáforo en rojo",
+                velocidadRegistrada = 0,
+                velocidadPermitida = 0,
+                ubicacion = "Calle 26",
+                fecha = "2025-05-08"
+            ),
+
+            VehiculoInfractor(
+                id = 9,
+                placa = "VWX-369",
+                tipoInfraccion = "Exceso de velocidad",
+                velocidadRegistrada = 88,
+                velocidadPermitida = 50,
+                ubicacion = "Autopista Norte",
+                fecha = "2025-05-09"
+            ),
+
+            VehiculoInfractor(
+                id = 10,
+                placa = "YZA-741",
+                tipoInfraccion = "Estacionamiento prohibido",
+                velocidadRegistrada = 0,
+                velocidadPermitida = 0,
+                ubicacion = "Zona Centro",
+                fecha = "2025-05-10"
+            ),
+
+            VehiculoInfractor(
+                id = 11,
+                placa = "BCD-852",
+                tipoInfraccion = "Exceso de velocidad",
+                velocidadRegistrada = 140,
+                velocidadPermitida = 70,
+                ubicacion = "Periférico Oriental",
+                fecha = "2025-05-11"
+            ),
+
+            VehiculoInfractor(
+                id = 12,
+                placa = "EFG-963",
+                tipoInfraccion = "Giro prohibido",
+                velocidadRegistrada = 0,
+                velocidadPermitida = 0,
+                ubicacion = "Cra. 7 con Calle 45",
+                fecha = "2025-05-12"
+            )
+        )
+
     fun ejecutarDemostraciones() {
 
-        // LIST: iterar y filtrar
-        Log.d(TAG, "LIST: historial de infracciones")
-        historialInfracciones.forEach { v ->
-            Log.d(TAG, "  Placa: ${v.placa} | Infracción: ${v.tipoInfraccion} | Gravedad: ${v.gravedad}")
+        Log.d(
+            TAG,
+            "Total infracciones: ${historialInfracciones.size}"
+        )
+
+        historialInfracciones.forEach { vehiculo ->
+
+            Log.d(
+                TAG,
+                "Placa: ${vehiculo.placa} | " +
+                        "Infracción: ${vehiculo.tipoInfraccion} | " +
+                        "Gravedad: ${vehiculo.gravedad}"
+            )
         }
 
-        val soloExcesos = historialInfracciones.filter { it.tipoInfraccion == "Exceso de velocidad" }
-        Log.d(TAG, "  → Filtrado (solo excesos de velocidad): ${soloExcesos.size} registros")
+        val excesosVelocidad =
+            historialInfracciones.filter {
+                it.tipoInfraccion == "Exceso de velocidad"
+            }
 
-        val placas = historialInfracciones.map { it.placa }
-        Log.d(TAG, "  → Placas en historial: $placas")
-
-        // MUTABLELIST: agregar y eliminar
-        Log.d(TAG, "MUTABLELIST: infracciones activas")
-        Log.d(TAG, "  Tamaño inicial: ${infraccionesActivas.size}")
-
-        val nueva = VehiculoInfractor(8, "STU-258", "Exceso de velocidad", 90, 60, "Cra. 50 Km 1", "2025-05-08")
-        infraccionesActivas.add(nueva)
-        Log.d(TAG, "  Tras agregar '${nueva.placa}': ${infraccionesActivas.size} elementos")
-
-        infraccionesActivas.removeIf { it.placa == "MNO-987" }
-        Log.d(TAG, "  Tras eliminar 'MNO-987': ${infraccionesActivas.size} elementos")
-
-        infraccionesActivas.sortByDescending { it.velocidadRegistrada }
-        Log.d(TAG, "  Ordenado por velocidad desc: ${infraccionesActivas.map { it.placa }}")
-
-        // MAP: buscar por clave
-        Log.d(TAG, "MAP: búsqueda por placa")
-        val placaBuscada = "DEF-456"
-        val encontrado = indicePorPlaca[placaBuscada]
-        if (encontrado != null) {
-            Log.d(TAG, "  Placa '$placaBuscada' encontrada → ${encontrado.ubicacion}, exceso: ${encontrado.excesoVelocidad} km/h")
-        } else {
-            Log.d(TAG, "  Placa '$placaBuscada' no encontrada")
-        }
-
-        Log.d(TAG, "  Todas las placas indexadas: ${indicePorPlaca.keys.toList()}")
-
-        val totalExcesos = indicePorPlaca.values
-            .filter { it.tipoInfraccion == "Exceso de velocidad" }
-            .sumOf { it.excesoVelocidad }
-        Log.d(TAG, "  Suma total de excesos en mapa: $totalExcesos km/h")
+        Log.d(
+            TAG,
+            "Excesos de velocidad registrados: ${excesosVelocidad.size}"
+        )
     }
 
-    /**
-     * Retorna la lista combinada (historial + activas) para poblar la UI.
-     */
-    fun obtenerTodas(): List<VehiculoInfractor> =
-        historialInfracciones + infraccionesActivas
+    fun obtenerTodas():
+            List<VehiculoInfractor> {
+
+        return historialInfracciones
+    }
 }

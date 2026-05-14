@@ -1,5 +1,8 @@
 package com.example.vehiculoinfractorls
 
+import android.graphics.Color
+import android.view.View
+import androidx.core.view.WindowCompat
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -7,12 +10,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vehiculoinfractorls.model.VehiculoInfractor
 
-/**
- * ACTIVIDAD 3 – Pantalla de Detalle
- * Recupera datos del Intent y los muestra en la UI.
- */
 class DetalleActivity : AppCompatActivity() {
+
     companion object {
+
+        private const val TAG = "SMT_Detalle"
+
         const val EXTRA_ID = "extra_id"
         const val EXTRA_PLACA = "extra_placa"
         const val EXTRA_TIPO_INFRACCION = "extra_tipo_infraccion"
@@ -24,55 +27,119 @@ class DetalleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.activity_detalle)
+        ocultarSystemBars()
 
-        // Recuperar datos del Intent
-        val id = intent.getIntExtra(EXTRA_ID, -1)
-        val placa = intent.getStringExtra(EXTRA_PLACA) ?: "N/A"
-        val tipoInfraccion = intent.getStringExtra(EXTRA_TIPO_INFRACCION) ?: "N/A"
-        val velocidadRegistrada = intent.getIntExtra(EXTRA_VELOCIDAD_REGISTRADA, 0)
-        val velocidadPermitida = intent.getIntExtra(EXTRA_VELOCIDAD_PERMITIDA, 0)
-        val ubicacion = intent.getStringExtra(EXTRA_UBICACION) ?: "N/A"
-        val fecha = intent.getStringExtra(EXTRA_FECHA) ?: "N/A"
+        val vehiculo = obtenerVehiculoDesdeIntent()
 
-        // Reconstruir objeto para usar propiedades calculadas (excesoVelocidad, gravedad)
-        val vehiculo = VehiculoInfractor(
-            id = id,
-            placa = placa,
-            tipoInfraccion = tipoInfraccion,
-            velocidadRegistrada = velocidadRegistrada,
-            velocidadPermitida = velocidadPermitida,
-            ubicacion = ubicacion,
-            fecha = fecha
+        poblarUI(vehiculo)
+
+        configurarBotonVolver()
+
+        Log.d(
+            TAG,
+            "Detalle cargado → ${vehiculo.placa}"
         )
+    }
 
-        Log.d("SMT_Detalle", "Datos recibidos → Placa: $placa | Gravedad: ${vehiculo.gravedad}")
+    private fun obtenerVehiculoDesdeIntent(): VehiculoInfractor {
 
-        // Poblar la UI
-        findViewById<TextView>(R.id.tvDetallePlacaHeader).text = "Placa: $placa"
-        findViewById<TextView>(R.id.tvDetallePlaca).text = placa
-        findViewById<TextView>(R.id.tvDetalleTipoInfraccion).text = tipoInfraccion
-        findViewById<TextView>(R.id.tvDetalleVelocidadReg).text = "$velocidadRegistrada km/h"
-        findViewById<TextView>(R.id.tvDetalleVelocidadPerm).text = "$velocidadPermitida km/h"
-        findViewById<TextView>(R.id.tvDetalleExceso).text = "${vehiculo.excesoVelocidad} km/h"
-        findViewById<TextView>(R.id.tvDetalleUbicacion).text = "📍 $ubicacion"
-        findViewById<TextView>(R.id.tvDetalleFecha).text = "📅 $fecha"
+        return VehiculoInfractor(
+            id = intent.getIntExtra(EXTRA_ID, -1),
+            placa = intent.getStringExtra(EXTRA_PLACA) ?: "N/A",
+            tipoInfraccion = intent.getStringExtra(EXTRA_TIPO_INFRACCION) ?: "N/A",
+            velocidadRegistrada = intent.getIntExtra(EXTRA_VELOCIDAD_REGISTRADA, 0),
+            velocidadPermitida = intent.getIntExtra(EXTRA_VELOCIDAD_PERMITIDA, 0),
+            ubicacion = intent.getStringExtra(EXTRA_UBICACION) ?: "N/A",
+            fecha = intent.getStringExtra(EXTRA_FECHA) ?: "N/A"
+        )
+    }
 
-        // Color dinámico del badge de gravedad
-        val tvGravedad = findViewById<TextView>(R.id.tvDetalleGravedad)
-        tvGravedad.text = vehiculo.gravedad
-        val colorFondo = when (vehiculo.gravedad) {
-            "GRAVE" -> android.graphics.Color.parseColor("#D32F2F")
-            "MODERADA" -> android.graphics.Color.parseColor("#F57C00")
-            "LEVE" -> android.graphics.Color.parseColor("#FBC02D")
-            else -> android.graphics.Color.parseColor("#388E3C")
+     //Renderiza información en pantalla
+
+    private fun poblarUI(vehiculo: VehiculoInfractor) {
+
+        findViewById<TextView>(R.id.tvDetallePlacaHeader).text =
+            "Placa: ${vehiculo.placa}"
+
+        findViewById<TextView>(R.id.tvDetallePlaca).text =
+            vehiculo.placa
+
+        findViewById<TextView>(R.id.tvDetalleTipoInfraccion).text =
+            vehiculo.tipoInfraccion
+
+        findViewById<TextView>(R.id.tvDetalleVelocidadReg).text =
+            "${vehiculo.velocidadRegistrada} km/h"
+
+        findViewById<TextView>(R.id.tvDetalleVelocidadPerm).text =
+            "${vehiculo.velocidadPermitida} km/h"
+
+        findViewById<TextView>(R.id.tvDetalleExceso).text =
+            "${vehiculo.excesoVelocidad} km/h"
+
+        findViewById<TextView>(R.id.tvDetalleUbicacion).text =
+            "📍 ${vehiculo.ubicacion}"
+
+        findViewById<TextView>(R.id.tvDetalleFecha).text =
+            "📅 ${vehiculo.fecha}"
+
+        configurarBadgeGravedad(vehiculo.gravedad)
+    }
+
+
+    // Configura badge dinámico de gravedad
+    private fun configurarBadgeGravedad(gravedad: String) {
+
+        val tvGravedad =
+            findViewById<TextView>(R.id.tvDetalleGravedad)
+
+        tvGravedad.text = gravedad
+
+        val color = when (gravedad) {
+
+            "GRAVE" ->
+                Color.parseColor("#D32F2F")
+
+            "MODERADA" ->
+                Color.parseColor("#F57C00")
+
+            "LEVE" ->
+                Color.parseColor("#FBC02D")
+
+            else ->
+                Color.parseColor("#388E3C")
         }
-        tvGravedad.setBackgroundColor(colorFondo)
 
-        // Botón volver
-        findViewById<Button>(R.id.btnVolver).setOnClickListener {
-            finish()
+        tvGravedad.setBackgroundColor(color)
+    }
+
+    private fun ocultarSystemBars() {
+
+        window.decorView.systemUiVisibility =
+            (
+                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                            or View.SYSTEM_UI_FLAG_FULLSCREEN
+                            or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    )
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+
+        if (hasFocus) {
+            ocultarSystemBars()
         }
+    }
+
+    private fun configurarBotonVolver() {
+
+        findViewById<Button>(R.id.btnVolver)
+            .setOnClickListener {
+                finish()
+            }
     }
 }
