@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="#FFFFFF"
+    android:elevation="2dp"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvPlaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ABC-123"
+        android:textColor="#1565C0"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvGravedad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="#D32F2F"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="4dp"
+        android:text="GRAVE"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvInfraccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPlaca"
+        android:layout_marginTop="6dp"
+        android:text="Exceso de velocidad"
+        android:textColor="#555555"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvUbicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvInfraccion"
+        android:layout_marginTop="4dp"
+        android:text="📍 Av. Boyacá Km 3"
+        android:textColor="#888888"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/btnDetalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUbicacion"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#1565C0"
+        android:text="Ver detalle"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>
