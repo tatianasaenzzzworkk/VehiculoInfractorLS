@@ -4,21 +4,28 @@
     <!-- PRIMARY -->
     <color name="primary_blue">#1565C0</color>
     <color name="primary_blue_dark">#0D47A1</color>
+    <color name="primary_blue_light">#BBDEFB</color>
 
     <!-- BACKGROUNDS -->
     <color name="background_light">#F5F5F5</color>
     <color name="card_background">#FFFFFF</color>
+    <color name="divider">#E0E0E0</color>
 
     <!-- TEXT -->
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#555555</color>
     <color name="text_hint">#888888</color>
     <color name="text_white">#FFFFFF</color>
+    <color name="text_accent">#1565C0</color>
 
     <!-- STATUS -->
     <color name="severity_high">#D32F2F</color>
     <color name="severity_medium">#F57C00</color>
     <color name="severity_low">#FBC02D</color>
     <color name="severity_safe">#388E3C</color>
+
+    <!-- VELOCIDAD -->
+    <color name="velocity_registered">#D32F2F</color>
+    <color name="velocity_permitted">#2E7D32</color>
 
 </resources>

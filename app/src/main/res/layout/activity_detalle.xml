@@ -3,7 +3,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="@color/background_light">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,87 +13,71 @@
         <!-- HEADER -->
         <RelativeLayout
             android:id="@+id/layoutHeaderDetalle"
+            style="@style/SMT.Header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#1565C0"
-            android:padding="20dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tvTituloDetalle"
+                style="@style/SMT.Text.ScreenTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detalle de Infracción"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:text="Detalle de Infracción" />
 
             <TextView
                 android:id="@+id/tvDetallePlacaHeader"
+                style="@style/SMT.Text.SubtitleDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvTituloDetalle"
                 android:layout_marginTop="4dp"
-                android:text="Placa: —"
-                android:textColor="#BBDEFB"
-                android:textSize="14sp" />
+                android:text="Placa: —" />
 
         </RelativeLayout>
 
         <!-- GRAVEDAD -->
         <RelativeLayout
             android:id="@+id/layoutGravedad"
+            style="@style/SMT.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/layoutHeaderDetalle"
-            android:layout_marginTop="16dp"
-            android:background="#FFFFFF"
-            android:elevation="2dp"
-            android:padding="16dp">
+            android:layout_marginTop="16dp">
 
             <TextView
                 android:id="@+id/tvLabelGravedad"
+                style="@style/SMT.Text.Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Nivel de gravedad"
-                android:textColor="#555555"
-                android:textSize="14sp" />
+                android:text="Nivel de gravedad" />
 
             <TextView
                 android:id="@+id/tvDetalleGravedad"
+                style="@style/SMT.Badge.Detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:background="#D32F2F"
-                android:paddingHorizontal="14dp"
-                android:paddingVertical="6dp"
-                android:text="GRAVE"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:text="GRAVE" />
 
         </RelativeLayout>
 
         <!-- DATOS VEHÍCULO -->
         <LinearLayout
             android:id="@+id/layoutDatosVehiculo"
+            style="@style/SMT.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/layoutGravedad"
             android:layout_marginTop="10dp"
-            android:background="#FFFFFF"
-            android:elevation="2dp"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <TextView
+                style="@style/SMT.Text.SectionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
-                android:text="DATOS DEL VEHÍCULO"
-                android:textColor="#1565C0"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:text="DATOS DEL VEHÍCULO" />
 
             <!-- PLACA -->
             <RelativeLayout
@@ -103,21 +87,18 @@
 
                 <TextView
                     android:id="@+id/labelPlaca"
+                    style="@style/SMT.Text.Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Placa"
-                    android:textColor="#888888"
-                    android:textSize="13sp" />
+                    android:text="Placa" />
 
                 <TextView
                     android:id="@+id/tvDetallePlaca"
+                    style="@style/SMT.Text.Value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="ABC-123"
-                    android:textColor="#212121"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:text="ABC-123" />
 
             </RelativeLayout>
 
@@ -129,20 +110,18 @@
 
                 <TextView
                     android:id="@+id/labelInfraccion"
+                    style="@style/SMT.Text.Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tipo de infracción"
-                    android:textColor="#888888"
-                    android:textSize="13sp" />
+                    android:text="Tipo de infracción" />
 
                 <TextView
                     android:id="@+id/tvDetalleTipoInfraccion"
+                    style="@style/SMT.Text.Value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="Exceso de velocidad"
-                    android:textColor="#212121"
-                    android:textSize="13sp" />
+                    android:text="Exceso de velocidad" />
 
             </RelativeLayout>
 
@@ -154,21 +133,18 @@
 
                 <TextView
                     android:id="@+id/labelVelReg"
+                    style="@style/SMT.Text.Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vel. registrada"
-                    android:textColor="#888888"
-                    android:textSize="13sp" />
+                    android:text="Vel. registrada" />
 
                 <TextView
                     android:id="@+id/tvDetalleVelocidadReg"
+                    style="@style/SMT.Text.ValueRed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="95 km/h"
-                    android:textColor="#D32F2F"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:text="95 km/h" />
 
             </RelativeLayout>
 
@@ -180,21 +156,18 @@
 
                 <TextView
                     android:id="@+id/labelVelPerm"
+                    style="@style/SMT.Text.Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vel. permitida"
-                    android:textColor="#888888"
-                    android:textSize="13sp" />
+                    android:text="Vel. permitida" />
 
                 <TextView
                     android:id="@+id/tvDetalleVelocidadPerm"
+                    style="@style/SMT.Text.ValueGreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="60 km/h"
-                    android:textColor="#2E7D32"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:text="60 km/h" />
 
             </RelativeLayout>
 
@@ -205,20 +178,18 @@
 
                 <TextView
                     android:id="@+id/labelExceso"
+                    style="@style/SMT.Text.Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Exceso"
-                    android:textColor="#888888"
-                    android:textSize="13sp" />
+                    android:text="Exceso" />
 
                 <TextView
                     android:id="@+id/tvDetalleExceso"
+                    style="@style/SMT.Text.Value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="35 km/h"
-                    android:textColor="#212121"
-                    android:textSize="13sp" />
+                    android:text="35 km/h" />
 
             </RelativeLayout>
 
@@ -227,54 +198,46 @@
         <!-- UBICACIÓN -->
         <LinearLayout
             android:id="@+id/layoutUbicacion"
+            style="@style/SMT.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/layoutDatosVehiculo"
             android:layout_marginTop="10dp"
-            android:background="#FFFFFF"
-            android:elevation="2dp"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <TextView
+                style="@style/SMT.Text.SectionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:text="LOCALIZACIÓN"
-                android:textColor="#1565C0"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:text="LOCALIZACIÓN" />
 
             <TextView
                 android:id="@+id/tvDetalleUbicacion"
+                style="@style/SMT.Text.Location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="📍 Av. Boyacá Km 3"
-                android:textColor="#212121"
-                android:textSize="14sp" />
+                android:text="📍 Av. Boyacá Km 3" />
 
             <TextView
                 android:id="@+id/tvDetalleFecha"
+                style="@style/SMT.Text.Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📅 2025-05-01"
-                android:textColor="#555555"
-                android:textSize="13sp" />
+                android:text="📅 2025-05-01" />
 
         </LinearLayout>
 
         <!-- BOTÓN -->
         <Button
             android:id="@+id/btnVolver"
+            style="@style/SMT.Button.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/layoutUbicacion"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#1565C0"
-            android:padding="14dp"
-            android:text="Volver"
-            android:textColor="#FFFFFF" />
+            android:text="Volver" />
 
     </RelativeLayout>
 

@@ -4,35 +4,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/background_light"
     android:padding="16dp">
 
     <!-- HEADER -->
     <RelativeLayout
         android:id="@+id/layoutHeader"
+        style="@style/SMT.Header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#1565C0"
-        android:padding="20dp">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvTitulo"
+        <LinearLayout
+            android:id="@+id/layoutTitulos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SMT – Infracciones"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/btnToggleTema"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tvTitulo"
+                style="@style/SMT.Text.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMT – Infracciones" />
+
+            <TextView
+                android:id="@+id/tvSubtitulo"
+                style="@style/SMT.Text.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Sistema de Monitoreo de Tráfico" />
+
+        </LinearLayout>
+
+        <!-- Toggle Modo Oscuro/Claro-->
         <TextView
-            android:id="@+id/tvSubtitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvTitulo"
-            android:layout_marginTop="4dp"
-            android:text="Sistema de Monitoreo de Tráfico"
-            android:textColor="#BBDEFB"
-            android:textSize="13sp" />
+            android:id="@+id/btnToggleTema"
+            style="@style/SMT.ToggleTema"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="🌙" />
 
     </RelativeLayout>
 

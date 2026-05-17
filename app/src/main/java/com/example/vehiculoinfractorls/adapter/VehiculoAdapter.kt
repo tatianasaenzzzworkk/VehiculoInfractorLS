@@ -1,11 +1,11 @@
 package com.example.vehiculoinfractorls.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vehiculoinfractorls.R
 import com.example.vehiculoinfractorls.model.VehiculoInfractor
@@ -41,11 +41,7 @@ class VehiculoAdapter(
 
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(
-                R.layout.item_vehiculo,
-                parent,
-                false
-            )
+            .inflate(R.layout.item_vehiculo, parent, false)
 
         return VehiculoViewHolder(view)
     }
@@ -54,54 +50,33 @@ class VehiculoAdapter(
         holder: VehiculoViewHolder,
         position: Int
     ) {
-
         val vehiculo = vehiculos[position]
 
-        holder.tvPlaca.text =
-            vehiculo.placa
+        holder.tvPlaca.text = vehiculo.placa
+        holder.tvGravedad.text = vehiculo.gravedad
+        holder.tvInfraccion.text = vehiculo.tipoInfraccion
+        holder.tvUbicacion.text = "📍 ${vehiculo.ubicacion}"
 
-        holder.tvGravedad.text =
-            vehiculo.gravedad
-
-        holder.tvInfraccion.text =
-            vehiculo.tipoInfraccion
-
-        holder.tvUbicacion.text =
-            "📍 ${vehiculo.ubicacion}"
-
-        configurarColorGravedad(
-            holder.tvGravedad,
-            vehiculo.gravedad
-        )
+        aplicarColorGravedad(holder.tvGravedad, vehiculo.gravedad)
 
         holder.btnDetalle.setOnClickListener {
             onDetalleClick(vehiculo)
         }
     }
 
-    override fun getItemCount(): Int =
-        vehiculos.size
+    override fun getItemCount(): Int = vehiculos.size
 
-    private fun configurarColorGravedad(
-        textView: TextView,
-        gravedad: String
-    ) {
+    private fun aplicarColorGravedad(textView: TextView, gravedad: String) {
 
-        val color = when (gravedad) {
-
-            "GRAVE" ->
-                Color.parseColor("#D32F2F")
-
-            "MODERADA" ->
-                Color.parseColor("#F57C00")
-
-            "LEVE" ->
-                Color.parseColor("#FBC02D")
-
-            else ->
-                Color.parseColor("#388E3C")
+        val colorRes = when (gravedad) {
+            "GRAVE" -> R.color.severity_high
+            "MODERADA" -> R.color.severity_medium
+            "LEVE" -> R.color.severity_low
+            else -> R.color.severity_safe
         }
 
-        textView.setBackgroundColor(color)
+        textView.setBackgroundColor(
+            ContextCompat.getColor(textView.context, colorRes)
+        )
     }
 }

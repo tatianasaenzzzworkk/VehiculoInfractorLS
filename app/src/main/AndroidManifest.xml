@@ -3,9 +3,10 @@
     package="com.example.vehiculoinfractorls">
 
     <application
+        android:name=".SMTApplication"
         android:allowBackup="true"
         android:label="SMT – Infracciones"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/Theme.VehiculoInfractorLS">
 
         <activity
             android:name=".MainActivity"
@@ -16,7 +17,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Activity de detalle: recibe datos via Intent extras -->
         <activity
             android:name=".DetalleActivity"
             android:exported="false"
